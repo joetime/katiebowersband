@@ -1,0 +1,130 @@
+body {
+    /*background-image: url('../img/yellow.jpg');*/
+    /*background-color: rgb(244, 239, 160);*/
+    /*background-position: center;*/
+    font-family: 'Milonga', sans-serif;
+    font-size: 18px;
+    /*background-color: #ffec85;*/
+    color: black;
+}
+
+#cd-image a {
+    color: black;
+}
+
+p {
+    text-align: center;
+}
+
+.well {
+    webkit-box-shadow: none;
+    box-shadow: none;
+    background-image: none;
+    margin-top: 20px;
+    background-color: transparent;
+    /*color: white;*/
+    /*background-color: rgba(0,0,0,0.7);*/
+    /*background-color: #111;*/
+    /*background-color: rgb(63, 0, 63); purple*/
+    padding-top: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 0px;
+    border-radius: 5px;
+
+    /*margin-right: 10%;
+    margin-left: 10%;*/
+}
+
+.badge {
+    font-family: 'Milonga';
+}
+
+
+
+
+.lead {
+    margin-bottom: 0px;
+}
+
+h1, h2, .lead {
+    font-family: 'Milonga', cursive;
+    /*display: inline-block;*/
+
+    /*font-family: 'Oranienbaum', serif;
+    font-family: 'Esteban', serif;*/
+    /*font-family: 'Ultra', serif;*/
+    /*color: white;
+    background-color: black;*/
+}
+h1 {
+    /*white-space: nowrap;*/
+    /*color: white;*/
+    /*background-color: rgba(0,0,0,0.7);*/
+    font-size: 61px;
+    padding: 15px;
+    text-align: center;
+    color: black;
+}
+
+#events-list li {
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    /*color: white;
+    background-color: black;*/
+    display: inline-block;
+ 
+}
+
+
+a {
+    /*color: #226baa;*/
+}
+
+#watermark {
+    /*border: 1px solid black;*/
+    display: block;
+    text-align: center;
+    position: absolute;
+    top: 50px; left: -50px; right: 0; bottom: 0;
+    font-size: 570px;
+    opacity: 0.06;
+    overflow: hidden;
+    /*color: green;*/
+    letter-spacing: -50px;   
+}
+
+.h1star {
+    font-size: 60px;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.hstar {
+    display: none;
+    /*opacity: .5;*/
+}
+
+#heartsmark {
+    
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    line-height: 150px;
+    font-size: 300px;
+    opacity: 0.02;
+    display: none;
+}
+
