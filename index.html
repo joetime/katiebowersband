@@ -1,295 +1,207 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <link href='http://fonts.googleapis.com/css?family=Milonga' rel='stylesheet' type='text/css'>
-    <link href="favicon.ico" rel="icon" type="image/x-icon" />
-    <title>Katie Bowers Band</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/site.css" rel="stylesheet" />
-</head>
-<body>
-    <!--<div id="heartsmark">
-        &hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;<br />
-        &hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;<br />
-        &hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;<br />
-        &hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;<br />
-        &hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;<br />
-        &hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;<br />
-        &hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;<br />
-        <br /></div>-->
+<!DOCTYPE html>
+<html ng-app="kbbApp">
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Milonga' rel='stylesheet' type='text/css'>
+        <link href="favicon.ico" rel="icon" type="image/x-icon" />
+        <title>Katie Bowers Band</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <!-- styles -->
+        <link href="css/site2.css" rel="stylesheet" />
+    </head>
+    <body ng-controller="kbbCtrl">
+        <div class="container">
 
-    <div id="watermark" class="text-center">
-        <p class="text-center">KBB</p>
-    </div>
-    
-    <div class="row">
-        <!-- header -->
-        <div class="col-md-12">
-            <h1><span class=h1star>&#9733;</span>&nbsp;Katie Bowers Band&nbsp;<span class=h1star>&#9733;</span></h1>
-        </div>
-    </div>
+            <!-- header -->
 
-    <div class="row">
-        <div class="col-md-6">
+            <div class="row">
 
-            <!-- who we are -->
-            <div class="well text-center">
-                <h2><span class='hstar'>&#9733;</span>&nbsp;Who We Are&nbsp;<span class='hstar'>&#9733;</span></h2>
-                <p class="lead text-center" style="width: 400px">
-                    We are a Baltimore based group that features Katie Bowers on vocals, Joseph Scala on guitar, and a rotating set of drummers and other talented musicians, including Chris Peacock and Mosno.
-                </p>
-            </div>
-
-            <!-- downloads -->
-            <div class="well text-center">
-                <h2><span class='hstar'>&#9733;</span>&nbsp;Downloads&nbsp;<span class='hstar'>&#9733;</span></h2>
-
-                <div>
-
-                    <div id="cd-image" style="position: relative; display: inline-block;">
-
-                        <a href="http://katieandjoe.bandcamp.com/album/the-revolution-ep" target="_music">
-                            <img src="img/circles.jpg" width="350" height="300" />
-                            <span style="position: absolute; top: 10px; right: 50px">the revolution ep</span>
-                        </a>
-
-                        <div style="font-size: 14px;">
-                            <a href="http://katieandjoe.bandcamp.com/track/the-revolution" style="color: black;" target="_music">the revolution</a> &#149; 
-                            <a href="http://katieandjoe.bandcamp.com/track/dangerous-and-strange" style="color: black;" target="_music">you make it rain</a> &#149; 
-                            <a href="http://katieandjoe.bandcamp.com/track/you-make-it-rain" style="color: black;" target="_music">dangerous and strange</a>
-                        </div>
-
-                    </div>
-
-
-                    <div style="padding-top: 10px">
-                        <span class="badge">Free to<br />
-                            a good home!</span>
-                        <span class="badge">Click a song<br />
-                            to download!</span>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-            <!-- videos -->
-            <div class="well text-center">
-                <h2><span class='hstar'>&#9733;</span>&nbsp;Videos&nbsp;<span class='hstar'>&#9733;</span></h2>
-                We've got a whole bunch of videos <br />on our <a href="http://www.youtube.com/joetime11" target="_video">youtube page</a>. 
-            </div>
-
-        </div>
-
-        <div class="col-md-6">
-
-            <!-- upcoming shows -->
-            <div class="well text-center">
-                <h2><span class='hstar'>&#9733;</span>&nbsp;Upcoming Shows&nbsp;<span class='hstar'>&#9733;</span></h2>
-
-                <div id="calendar-loading">
-                    <p>
-                        Loading our calendar...
-                        <br />
-                        you can also <a href="https://www.google.com/calendar/embed?src=6ebfnlaom2hdleqk54b6ne9adc%40group.calendar.google.com&ctz=America/New_York" target="_calendar">see it here</a>.
+                <div class="col-xs-12">
+                    <h1>Katie Bowers Band</h1>
+                    <p class="lead headline">
+                        We are a Baltimore based group that features Katie Bowers on vocals, 
+                        Joseph Scala on guitar, and a rotating set of 
+                        <a href="#musicians">drummers and other talented musicians.</a>
+                    </p>
+                    <p class="lead headline">You can usually find us at 
+                        <a href="http://leadbetterstavern.com" target="_new">Leadbetters</a> or 
+                        <a href="http://catseyepub.com" target="_new">Cat's Eye Pub</a> in 
+                        <a href="https://goo.gl/maps/89kij" target="_new">Fells Point</a>, Baltimore, MD.
                     </p>
                 </div>
-
-                <ul id="events-list" class="list-unstyled" data-bind="foreach: shows">
-
-                    <li class="lead text-center">
-                        <span data-bind="text: when"></span>&nbsp;&nbsp;<span class="badge" data-bind="    text: who"></span>
-                        <br />
-                        <a data-bind="if: link != '',  text: where, attr: { href: link }" target="_where"></a>
-                        <span data-bind="if: link == '', text: where"></span>
-                    </li>
-
-                </ul>
             </div>
+
+
+            <!-- calendar -->
+
+            <div class="row">
+
+                <div class="col-xs-12">
+
+                    <h2>Upcoming Events</h2>
+                    <ul class="list-unstyled calendar-list" ng-cloak>
+                        <li ng-repeat="ev in calEvents">
+                            
+                            <time datetime="2008-02-14 20:00">
+                            <div class="calendar-block pull-left">
+                                <div class="day-of-week">{{ev.date.dayOfWeek}}</div>
+                                <div class="day">{{ev.date.day}}</div>
+                                <div class="month">{{ev.date.month}}</div>
+                            </div>
+                            </time>
+                            
+                            <h3>{{ev.title}}</h3>
+                            <h4><a href="{{ev.where.website}}">{{ev.where.name}}</a>, {{ev.date.time}}</h4>
+                                
+                        </li>
+                    </ul>
+                    <p class="text-muted">
+                        We don't have an email list (sorry) but we do update our calendar frequently, so be sure to check back :)
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Listen -->
+
+            <div class="row">
+
+                <div class="col-xs-12">
+
+                    <h2>Listen</h2>
+                    <p class="lead">
+                        All available for free download :)
+                    </p>
+                    <p>
+                    <ul class="list-unstyled listen">
+                        <li><a href="http://katieandjoe.bandcamp.com/" target="_new">
+                            <img src="http://f1.bcbits.com/img/a2756835299_7.jpg" class="pull-left" />
+                            </a>
+                            <a href="http://katieandjoe.bandcamp.com/" target="_new">
+                                Live at Takoma Park Folk Festival
+                            </a>
+                            <br />Seven original songs recorded live, with Mosno on djembe. 
+                            <br />Released January 2014.
+                        </li>
+                        <li><a href="http://katieandjoe.bandcamp.com/album/the-revolution-ep" target="_new">
+                            <img src="http://f1.bcbits.com/img/a4038510317_7.jpg" class="pull-left" />
+                            </a>
+                            <a href="http://katieandjoe.bandcamp.com/album/the-revolution-ep" target="_new">
+                                The Revolution EP
+                            </a>
+                            <br />Three 'no-frills' original tracks. 
+                            <br />Released May 2011.
+                        </li>
+                        <li>
+                            <a href="https://soundcloud.com/josephscala/sets/skin_bones" target="_new">
+                                <img src="https://i1.sndcdn.com/artworks-000102375090-mulkb3-t200x200.jpg" class="pull-left" />
+                            </a>
+                            <a href="https://soundcloud.com/josephscala/sets/skin_bones" target="_new">
+                                Skin + Bones
+                            </a>
+                            <br />Joe's CD of original music. 
+                            <br />Released January 2015. 
+                        </li>
+                        <li>
+                            <a href="http://www.youtube.com/joetime11">
+                                <img src="http://www.youtube.com/yt/brand/media/image/YouTube-logo-full_color.png" 
+                                     class="pull-left" style="border: 1px solid #ddd" />
+                            </a>
+                            <a href="http://www.youtube.com/yt/brand/media/image/YouTube-logo-full_color.png" target="_new">
+                                Our YouTube Page
+                            </a>
+                            <br />Check out some videos of our live performances here. 
+                        </li>
+                    </ul>
+                    </p>
+            </div>
+        </div>
+
+
+            <!-- other musicians -->
+        
+            <a name="musicians"></a>
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <h2>Other Musicians</h2>
+
+                    <p class="lead">
+                        We like to mix it up and add other musicians for new sounds and flavors. 
+                        Here are some we frequently play with, although there are many others from time to time.
+                    </p>
+                    <ul class="list-unstyled">
+                        <li>Mosno: djembe and vocals</li>
+                        <li>Chris Peacock: congas</li>
+                        <li>Chris Durm: lead guitar and bass</li>
+                    </ul>
+
+                    <p>
+                        And if you enjoy our music, you may also enjoy these other Baltimore musicians. Check 'em out!
+                    <ul class="list-unstyled">
+                        <li><a href="http://www.josephscala.com" target="_others">Joseph Scala ;)</a></li>
+                        <li><a href="http://www.reverbnation.com/billythomsonband" target="_others">Billy Thomson Band</a></li>
+                        <li><a href="http://www.mosno.net" target="_others">Mosno</a></li>
+                        <li><a href="http://casualtunes.com" target="_others">Ken G-Shorts</a></li>
+                        <li>Chris Durm</li>
+                        <li>Ryan Comstock</li>
+                        <li>Jess McQuay</li>
+                        <li><a href="http://jonpattonmusic.com/" target="_others">Jon Patton</a></li>
+                        <li><a href="http://www.kfishermusic.com/" target="_others">Katie Fisher</a></li>
+                        <li><a href="http://midwayfair.org" target="_others">Midway Fair</a></li>
+                        <li><a href="http://www.facebook.com/redbeardbaltimore" target="_others">Redbeard</a></li>
+                        <li>Tony Calato</li>
+                        <li><a href="http://frankflorence.com" target="_others">Frank Florence</a></li>
+                        <li>Bill &amp; Kristen</li>
+                        <li>Russ Haire</li>
+                    </ul>
+                    </p>
+            </div>
+
+
+            </div>
+
 
             <!-- contact -->
-            <div class="well text-center">
-                <h2><span class='hstar'>&#9733;</span>&nbsp;Contact&nbsp;<span class='hstar'>&#9733;</span></h2>
-                <p style="width: 400px">
-                    We would love to hear from you! We are also available for private gatherings. 
-                </p>
-                <br />
-                <p>
-                    <a href="mailto:katieandjoe.us@gmail.com">katieandjoe.us@gmail.com</a>
-                </p>
-                <br />
-                <p>p.s. If you send a friend request, include a short message <br />so we know you're not a dirty spammer!</p><br />
-                
-                <p>
-                    <a href="https://www.facebook.com/katie.bowersscala" target="_facebook">Katie's Facebook Page</a>
-                </p>
-                <br />
-                <p>
-                    <a href="https://www.facebook.com/joseph.scala" target="_facebook">Joe's Facebook Page</a>
-                </p>
+
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <h2>Contact</h2>
+
+                    <p class="lead">
+                        We would love to hear from you! 
+                        <br />We are also available for any fun events you may be hosting.
+                    </p>
+
+                    <p>
+                        Email us here: <a href="mailto:katieandjoe.us@gmail.com">katieandjoe.us@gmail.com</a>
+                    </p>
+                    <p>
+                        Here we are on facebook: 
+                        <a href="https://www.facebook.com/katie.bowersscala" target="_facebook">Katie</a> 
+                        &amp;
+                        <a href="https://www.facebook.com/joseph.scala" target="_facebook">Joe</a>
+                        <br />
+                        <span class="small text-muted">
+                            p.s. If you send a friend request, include a short message <br />so we know you're not a dirty spammer!
+                        </span>
+                    </p>
+                </div>
             </div>
 
-            <!-- other balt -->
-            <div class="well text-center">
-                <h2><span class='hstar'>&#9733;</span>&nbsp;Other Baltimore Musicians&nbsp;<span class='hstar'>&#9733;</span></h2>
-                If you like us, then you should definitely<br /> check out these other acts:<br />
-                <a href="http://www.josephscala.com" target="_others">Joseph Scala ;)</a><br />
-                <a href="http://www.reverbnation.com/billythomsonband" target="_others">Billy Thomson Band</a><br />
-                <a href="http://www.mosno.net" target="_others">Mosno</a><br />
-                <a href="http://jonpattonmusic.com/" target="_others">Jon Patton</a><br />
-                <a href="http://www.kfishermusic.com/" target="_others">Katie Fisher</a><br />
-                <a href="http://midwayfair.org" target="_others">Midway Fair</a><br />
-                <a href="https://www.facebook.com/redbeardbaltimore" target="_others">Redbeard</a><br />
-                <a href="http://casualtunes.com" target="_others">Ken G-Shorts</a><br />
-                <a href="http://frankflorence.com" target="_others">Frank Florence</a><br />
-            </div>
 
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="well text-center">
-                <h2 style="opacity:.1">LK&hearts;MJ</h2>
+            <!-- LKMJ -->
+    
+            <div class="row">
+                <div class="text-center">
+                    <h2 style="opacity:.1">LK&hearts;MJ</h2>
+                </div>
             </div>
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="Scripts/jquery-2.0.3.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="Scripts/knockout-2.3.0.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/moment.js"></script>
-
-    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-    <!--<script src="js/respond.js"></script>-->
-
-    <script>
-        var backgroundColors = [
-            [39, 49, 245],
-            [202, 134, 187],
-            [173, 77, 76],
-            [14, 82, 135],
-            [230, 251, 58],
-            [211, 93, 172],
-            [85, 97, 189],
-            [230, 172, 73],
-            [216, 225, 206],
-            [120, 112, 120],
-            [23, 86, 137],
-            [234, 199, 170],
-            [174, 201, 41],
-            [183, 30, 32],
-            [76, 166, 151]
-        ];
-    </script>
-
-    <script>
-
-        var VM = new viewModel();
-
-        $(document).ready(function () {
-
-            // random bg color
-            //var colorString = 'rgb(' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ',' + parseInt(Math.random() * 255) + ')';
-
-            var randIndex = parseInt(Math.random() * (backgroundColors.length - 1));
-            var randSet = backgroundColors[randIndex];
-            var colorString = "rgb(" + randSet[0] + "," + randSet[1] + "," + randSet[2] + ")";
-            $("body").css('background-color', colorString);
-            console.log(colorString);
-
-            var calenderUrl = 'https://www.google.com/calendar/feeds/6ebfnlaom2hdleqk54b6ne9adc%40group.calendar.google.com/public/full?alt=json&orderby=starttime&max-results=15&singleevents=true&sortorder=ascending&futureevents=true&ctz=America/New_York'
-            var eventName = '';
-
-            $("#events-list").hide();
-
-            $.getJSON(calenderUrl, function (data) {
-
-                data.feed.entry.forEach(function (event, index) {
-
-                    // When
-
-                    var start = moment(event.gd$when[0].startTime)
-                    var end = moment(event.gd$when[0].endTime)
-
-                    // if it's an 'all day' event, we don't want to show the time
-                    var showTime = (start.format() != end.subtract(1,'days').format());
-                    
-                    var datestring = start.format("dddd, MMMM Do")
-                    if (showTime)
-                        datestring += start.format(", ha") + " - " + end.format("ha");
-
-
-
-                    // Who
-                    var split = event.title.$t.split(' at ');
-                    if (split.length == 1)
-                        split = event.title.$t.split(' @ ');
-
-                    var who = split[0];
-
-                    if (who == "KBB" || who == "Katie Bowers Band")
-                        who = "Full Band";
-
-
-                    // Where
-
-                    var where = event.gd$where[0].valueString;
-
-                    if (where.length == 0 && split.length > 0)
-                        where = split[1];
-
-
-                    // Link
-
-                    var link = "";
-
-                    if (where.toLowerCase().indexOf("leadb") >= 0)
-                        link = "http://www.leadbetterstavern.com";
-
-                    if (where.toLowerCase().indexOf("eye") >= 0)
-                        link = "http://www.catseyepub.com/";
-
-
-                    //console.log("---");
-
-                    //console.log("date: " + datestring);
-                    //console.log("where: " + where);
-                    //console.log("who:" + who);
-                    //console.log("link:" + link);
-
-                    VM.shows.push(new upcomingShow(who, datestring, where, link));
-                });
-
-
-                ko.applyBindings(VM);
-
-                $("#calendar-loading").fadeOut(1000,
-                    function () {
-                        $("#events-list").fadeIn(1000);
-                    });
-            });
-
-
-        });
-
-        function upcomingShow(who, when, where, link) {
-            var show = this;
-            show.who = who;
-            show.where = where;
-            show.when = when;
-            show.link = link;
-        };
-
-        function viewModel() {
-            var vm = this;
-            vm.shows = ko.observableArray([]);
-        };
-
-    </script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js"></script>
+    <script src="css/ctrl.js"></script>
 </body>
 </html>
