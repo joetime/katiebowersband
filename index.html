@@ -56,6 +56,9 @@
                                 
                         </li>
                     </ul>
+                    <p class="text-danger" ng-show="errorMessage">
+                        {{errorMessage}}
+                    </p>
                     <p>
                         You can also view <a href='https://www.google.com/calendar/embed?src=6ebfnlaom2hdleqk54b6ne9adc%40group.calendar.google.com&ctz=America/New_York' target="_new"> google calendar</a> if you'd like.
                     </p>
@@ -138,6 +141,8 @@
                         <li>Mosno: djembe and vocals</li>
                         <li>Chris Peacock: congas</li>
                         <li>Chris Durm: lead guitar and bass</li>
+                        <li>Alan Marcus: lead guitar</li>
+                        <li>Ken G-Shorts: lead guitar</li>
                     </ul>
 
                     <p>
@@ -150,6 +155,7 @@
                         <li>Chris Durm</li>
                         <li>Ryan Comstock</li>
                         <li>Jess McQuay</li>
+                        <li>Alan Marcus</li>
                         <li><a href="http://jonpattonmusic.com/" target="_others">Jon Patton</a></li>
                         <li><a href="http://www.kfishermusic.com/" target="_others">Katie Fisher</a></li>
                         <li><a href="http://midwayfair.org" target="_others">Midway Fair</a></li>
@@ -203,7 +209,7 @@
                 </div>
             </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js"></script>
     <script src="ctrl.js"></script>
 </body>

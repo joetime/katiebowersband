@@ -1,6 +1,8 @@
 angular.module('kbbApp', [])
 .controller('kbbCtrl', ['$scope', '$http', function($scope, $http) {
     
+    var apiKey = 'AIzaSyCo-_b7KEPky0Hz7gxC-H60wVRROv6BUqU';
+    
     $scope.calEvents = [];
     
     function parseEvents(events) {
@@ -8,11 +10,11 @@ angular.module('kbbApp', [])
         var lst = [];
         angular.forEach(events, function(ev, index) {
             
-            var dateString = cleanDate(ev.summary.$t);
-            var date = parseDate(dateString);
+            //var dateString = cleanDate(ev.start.dateTime);
+            var date = parseDate(ev.start.dateTime);
             
-            var title = parseTitle(ev.title.$t);
-            var where = parseWhere(ev.title.$t);
+            var title = parseTitle(ev.summary);
+            var where = parseWhere(ev.summary);
             
             lst.push({ date: date, title: title, where: where });
         });
@@ -53,66 +55,38 @@ angular.module('kbbApp', [])
         return where;
     }
     
-    
-    function cleanDate (str) {
-        return str
-        .substring(0, str.indexOf(" to "))
-        .replace("When:","")
-        .trim();   
-    }
-
     function parseDate (str) {
-        // format is: Thu Mar 19, 2015 5pm
-        var arr = str.split(" ");
+        // format is: 2015-12-22T21:00:00-05:00
+        var mom = moment(str);
+        console.log('moment:', mom );
         return {
-            dayOfWeek: parseDayOfWeek(arr[0]),
-            month: parseMonth(arr[1]),
-            day: arr[2].replace(",",""),
-            year: arr[3],
-            time: arr[4]
+            dayOfWeek: mom.format('dddd'),
+            month: mom.format('MMMM'),
+            day: mom.format('D'),
+            year: mom.format('YYYY'),
+            time: mom.format('h:mm A')
         }
     }
-
-    function parseDayOfWeek(str) {
-
-        if (str == "Mon") return "Monday";
-        if (str == "Tue") return "Tuesday";
-        if (str == "Wed") return "Wednesday";
-        if (str == "Thu") return "Thursday";
-        if (str == "Fri") return "Friday";
-        if (str == "Sat") return "Saturday";
-        if (str == "Sun") return "Sunday";
-
-        // in case it doesnt match 
-        return str;
-    }
-
-    function parseMonth(str) {
-        
-        if (str == "Jan") return "January";
-        if (str == "Feb") return "February";
-        if (str == "Mar") return "March";
-        if (str == "Apr") return "April";
-        if (str == "May") return "May";
-        if (str == "Jun") return "June";
-        if (str == "Jul") return "July";
-        if (str == "Aug") return "August";
-        if (str == "Sep") return "September";
-        if (str == "Oct") return "October";
-        if (str == "Nov") return "November";
-        if (str == "Dec") return "December";
-        
-        return str;
-    }
-
-    var url = 'https://www.google.com/calendar/feeds/6ebfnlaom2hdleqk54b6ne9adc%40group.calendar.google.com/public/basic?alt=json&orderby=starttime&sortorder=ascending&futureevents=true';
-
+    
+    var calendarId = '6ebfnlaom2hdleqk54b6ne9adc@group.calendar.google.com';
+    
+    var timeMin = moment().subtract(6, 'hour');
+    var url = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events?' + 
+    'key=' + apiKey + 
+    '&singleEvents=true' +
+    '&orderBy=starttime' + 
+    '&timeMin=' + timeMin.toISOString() //'2015-11-20T00:00:01Z';
+    
     $http.get(url)
     .success(function (resp) { 
-        console.log(resp.feed.entry);
+     
+        console.log(resp.items);
 
-        parseEvents(resp.feed.entry);
+        parseEvents(resp.items);
     })
-    .error(function (resp) { console.log(resp); });
+    .error(function (resp) { 
+        $scope.errorMessage = "Oops, there was a problem loading our calendar, but...";
+        console.log(resp); 
+    });
 
 }]);
